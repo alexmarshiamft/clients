@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Peaceful Minds Therapy | Professional Counselling &amp; Psychotherapy</title>
+  <meta name="description" content="Compassionate, confidential therapy for anxiety, depression, relationships, and life transitions. Book a free 20-minute consultation today." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --sage:    #6b8f71;
+      --sage-lt: #e8f0e9;
+      --cream:   #faf7f2;
+      --warm:    #c9a96e;
+      --dark:    #2c2c2c;
+      --mid:     #555;
+      --light:   #888;
+      --white:   #ffffff;
+      --radius:  12px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--dark);
+      background: var(--white);
+      line-height: 1.6;
+    }
+
+    /* ── Nav ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid #eee;
+      padding: 0 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 68px;
+    }
+
+    .nav-brand {
+      font-family: 'Lora', serif;
+      font-size: 1.3rem;
+      color: var(--sage);
+      text-decoration: none;
+    }
+
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--mid);
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--sage); }
+
+    .btn {
+      display: inline-block;
+      padding: .75rem 1.75rem;
+      border-radius: 50px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: transform .15s, box-shadow .15s;
+      cursor: pointer;
+      border: none;
+    }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,.12); }
+
+    .btn-primary   { background: var(--sage); color: var(--white); }
+    .btn-outline   { background: transparent; color: var(--sage); border: 2px solid var(--sage); }
+    .btn-warm      { background: var(--warm); color: var(--white); }
+
+    /* ── Hero ── */
+    #hero {
+      min-height: 90vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 4rem;
+      padding: 6rem 8% 4rem;
+      background: linear-gradient(135deg, var(--cream) 0%, #f0e9ff1a 100%);
+    }
+
+    .hero-text h1 {
+      font-family: 'Lora', serif;
+      font-size: clamp(2.2rem, 4vw, 3.5rem);
+      line-height: 1.2;
+      color: var(--dark);
+      margin-bottom: 1.25rem;
+    }
+    .hero-text h1 em { color: var(--sage); font-style: italic; }
+
+    .hero-text p {
+      font-size: 1.1rem;
+      color: var(--mid);
+      max-width: 480px;
+      margin-bottom: 2rem;
+    }
+
+    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+    .hero-visual {
+      border-radius: 24px;
+      overflow: hidden;
+      position: relative;
+      aspect-ratio: 4/5;
+      background: linear-gradient(160deg, #c8dfc9 0%, #a8c9aa 50%, #8ab58c 100%);
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .hero-visual svg {
+      width: 70%;
+      opacity: .85;
+    }
+
+    .trust-strip {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid #e0ddd8;
+    }
+
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      font-size: .85rem;
+      color: var(--light);
+    }
+    .trust-item span { font-size: 1.2rem; }
+
+    /* ── Sections ── */
+    section { padding: 5rem 8%; }
+
+    .section-label {
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      font-size: .75rem;
+      font-weight: 600;
+      color: var(--sage);
+      margin-bottom: .75rem;
+    }
+
+    .section-title {
+      font-family: 'Lora', serif;
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      line-height: 1.25;
+      margin-bottom: 1rem;
+    }
+
+    .section-sub {
+      color: var(--mid);
+      font-size: 1.05rem;
+      max-width: 560px;
+    }
+
+    /* ── Services ── */
+    #services { background: var(--cream); }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .service-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 2rem;
+      transition: box-shadow .2s, transform .2s;
+    }
+    .service-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,.08); }
+
+    .service-icon {
+      width: 52px; height: 52px;
+      border-radius: 14px;
+      background: var(--sage-lt);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .service-card h3 { font-size: 1.1rem; margin-bottom: .5rem; }
+    .service-card p  { font-size: .9rem; color: var(--mid); }
+
+    /* ── About ── */
+    #about {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .about-visual {
+      border-radius: 20px;
+      background: linear-gradient(145deg, #d4e8d5 0%, #b8d5bb 100%);
+      aspect-ratio: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 8rem;
+    }
+
+    .about-text .credentials {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .6rem;
+      margin-top: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .cred-tag {
+      background: var(--sage-lt);
+      color: var(--sage);
+      border-radius: 50px;
+      padding: .3rem .9rem;
+      font-size: .8rem;
+      font-weight: 500;
+    }
+
+    blockquote.about-quote {
+      border-left: 3px solid var(--sage);
+      padding-left: 1rem;
+      color: var(--mid);
+      font-style: italic;
+      font-family: 'Lora', serif;
+      margin-bottom: 2rem;
+    }
+
+    /* ── Approach ── */
+    #approach { background: var(--sage); color: var(--white); }
+    #approach .section-label { color: rgba(255,255,255,.6); }
+    #approach .section-title { color: var(--white); }
+    #approach .section-sub   { color: rgba(255,255,255,.8); max-width: 680px; }
+
+    .approach-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .approach-item { text-align: center; }
+    .approach-item .num {
+      font-family: 'Lora', serif;
+      font-size: 3rem;
+      color: rgba(255,255,255,.25);
+      line-height: 1;
+      margin-bottom: .5rem;
+    }
+    .approach-item h3 { font-size: 1rem; margin-bottom: .4rem; color: var(--white); }
+    .approach-item p  { font-size: .85rem; color: rgba(255,255,255,.75); }
+
+    /* ── Testimonials ── */
+    #testimonials { background: var(--cream); }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .testimonial-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 2rem;
+    }
+
+    .stars { color: var(--warm); margin-bottom: 1rem; font-size: 1.1rem; }
+
+    .testimonial-card p { font-family: 'Lora', serif; font-style: italic; color: var(--mid); margin-bottom: 1.25rem; }
+
+    .reviewer { display: flex; align-items: center; gap: .75rem; }
+    .reviewer-avatar {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: var(--sage-lt);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+    }
+    .reviewer-name { font-weight: 600; font-size: .9rem; }
+    .reviewer-label { font-size: .78rem; color: var(--light); }
+
+    /* ── FAQ ── */
+    .faq-grid { max-width: 720px; margin: 3rem auto 0; }
+
+    details {
+      border-bottom: 1px solid #eee;
+      padding: 1.25rem 0;
+    }
+    summary {
+      font-weight: 500;
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    summary::after { content: '+'; font-size: 1.4rem; color: var(--sage); transition: transform .2s; }
+    details[open] summary::after { transform: rotate(45deg); }
+    details p { margin-top: .75rem; color: var(--mid); font-size: .95rem; }
+
+    /* ── CTA ── */
+    #cta {
+      background: linear-gradient(135deg, #2c4a2e 0%, var(--sage) 100%);
+      color: var(--white);
+      text-align: center;
+      padding: 7rem 8%;
+    }
+    #cta .section-title { color: var(--white); max-width: 620px; margin: 0 auto 1rem; }
+    #cta .section-sub   { color: rgba(255,255,255,.8); margin: 0 auto 2.5rem; text-align: center; }
+
+    /* ── Footer ── */
+    footer {
+      background: var(--dark);
+      color: rgba(255,255,255,.6);
+      padding: 3rem 8%;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 3rem;
+    }
+
+    .footer-brand { font-family: 'Lora', serif; color: var(--white); font-size: 1.2rem; margin-bottom: .75rem; }
+    footer p { font-size: .85rem; }
+    footer a { color: rgba(255,255,255,.6); text-decoration: none; }
+    footer a:hover { color: var(--white); }
+    .footer-col h4 { color: var(--white); font-size: .9rem; margin-bottom: 1rem; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: .5rem; font-size: .85rem; }
+
+    .footer-bottom {
+      background: #1a1a1a;
+      text-align: center;
+      padding: 1.25rem 5%;
+      font-size: .78rem;
+      color: rgba(255,255,255,.4);
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      #hero   { grid-template-columns: 1fr; padding: 4rem 6% 3rem; gap: 2rem; }
+      #about  { grid-template-columns: 1fr; gap: 2.5rem; }
+      .hero-visual { display: none; }
+      footer  { grid-template-columns: 1fr; gap: 2rem; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── Navigation ── -->
+<nav>
+  <a class="nav-brand" href="#">🌿 Peaceful Minds</a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#testimonials">Testimonials</a></li>
+    <li><a href="#faq">FAQ</a></li>
+  </ul>
+  <a class="btn btn-primary" href="#cta">Book Free Consultation</a>
+</nav>
+
+<!-- ── Hero ── -->
+<section id="hero">
+  <div class="hero-text">
+    <p class="section-label">Therapy &amp; Counselling</p>
+    <h1>Find your path to a <em>calmer,</em> clearer life</h1>
+    <p>
+      You deserve to feel heard, understood, and empowered. Whether you're
+      navigating anxiety, relationship challenges, life transitions, or just
+      feeling stuck — we're here to help.
+    </p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#cta">Book a Free 20-Min Consultation</a>
+      <a class="btn btn-outline" href="#services">Explore Services</a>
+    </div>
+    <div class="trust-strip">
+      <span class="trust-item"><span>🔒</span> 100% Confidential</span>
+      <span class="trust-item"><span>💻</span> In-Person &amp; Online</span>
+      <span class="trust-item"><span>📋</span> BACP Accredited</span>
+      <span class="trust-item"><span>⭐</span> 4.9/5 from 200+ clients</span>
+    </div>
+  </div>
+
+  <div class="hero-visual" aria-hidden="true">
+    <!-- Decorative illustration -->
+    <svg viewBox="0 0 200 260" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- person silhouette in peaceful pose -->
+      <ellipse cx="100" cy="60" rx="32" ry="32" fill="rgba(255,255,255,0.5)"/>
+      <path d="M68 120 Q68 200 100 220 Q132 200 132 120 Q132 92 100 92 Q68 92 68 120Z" fill="rgba(255,255,255,0.4)"/>
+      <path d="M40 140 Q60 130 68 150 Q76 170 60 180Z" fill="rgba(255,255,255,0.3)"/>
+      <path d="M160 140 Q140 130 132 150 Q124 170 140 180Z" fill="rgba(255,255,255,0.3)"/>
+      <!-- leaves -->
+      <ellipse cx="30" cy="220" rx="18" ry="30" fill="rgba(255,255,255,0.2)" transform="rotate(-30 30 220)"/>
+      <ellipse cx="170" cy="230" rx="14" ry="24" fill="rgba(255,255,255,0.2)" transform="rotate(20 170 230)"/>
+    </svg>
+  </div>
+</section>
+
+<!-- ── Services ── -->
+<section id="services">
+  <p class="section-label">What We Offer</p>
+  <h2 class="section-title">Therapy tailored to <em>your</em> needs</h2>
+  <p class="section-sub">
+    From one-to-one counselling to couples work, every session is a safe,
+    non-judgemental space created entirely for you.
+  </p>
+
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">😰</div>
+      <h3>Anxiety &amp; Stress</h3>
+      <p>Learn evidence-based tools to break the cycle of worry, calm your nervous system, and reclaim day-to-day peace.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">💙</div>
+      <h3>Depression &amp; Low Mood</h3>
+      <p>Compassionate support to help you understand your patterns, rediscover joy, and build lasting resilience.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">💑</div>
+      <h3>Couples Therapy</h3>
+      <p>Rebuild trust, improve communication, and strengthen your relationship through guided, structured sessions.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🧬</div>
+      <h3>Trauma &amp; PTSD</h3>
+      <p>Specialist trauma-informed therapy including EMDR to process past experiences and restore a sense of safety.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🔄</div>
+      <h3>Life Transitions</h3>
+      <p>Navigate career changes, bereavement, divorce, or major milestones with professional support and clarity.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🧒</div>
+      <h3>Child &amp; Teen Therapy</h3>
+      <p>Specialist support for young people aged 8–17, using play therapy, CBT, and creative techniques.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── About ── -->
+<section id="about">
+  <div class="about-visual" aria-hidden="true">🌿</div>
+  <div class="about-text">
+    <p class="section-label">Meet Your Therapist</p>
+    <h2 class="section-title">Dr. Sarah Mitchell, DCPsych</h2>
+
+    <blockquote class="about-quote">
+      "Therapy isn't about fixing you — it's about helping you find the
+      strengths you already carry."
+    </blockquote>
+
+    <p style="color:var(--mid); margin-bottom:1rem;">
+      With over 15 years of clinical experience, Sarah specialises in
+      integrative psychotherapy, drawing on CBT, person-centred, and
+      psychodynamic approaches to create a treatment plan uniquely suited to
+      each client.
+    </p>
+    <p style="color:var(--mid);">
+      Sarah holds a Doctorate in Clinical Psychology from the University of
+      Edinburgh and is a Senior Accredited member of the BACP. She works
+      with adults, couples, and young people both in-person (Edinburgh city
+      centre) and online.
+    </p>
+
+    <div class="credentials">
+      <span class="cred-tag">DCPsych — Edinburgh</span>
+      <span class="cred-tag">BACP Senior Accredited</span>
+      <span class="cred-tag">EMDR Practitioner</span>
+      <span class="cred-tag">CBT Certified</span>
+      <span class="cred-tag">15+ Years Experience</span>
+    </div>
+
+    <a class="btn btn-primary" href="#cta">Book a Consultation</a>
+  </div>
+</section>
+
+<!-- ── Approach ── -->
+<section id="approach">
+  <p class="section-label">The Process</p>
+  <h2 class="section-title">What to expect</h2>
+  <p class="section-sub">
+    Starting therapy can feel daunting. Here's exactly how it works — no
+    surprises, no jargon.
+  </p>
+  <div class="approach-grid">
+    <div class="approach-item">
+      <div class="num">01</div>
+      <h3>Free Consultation</h3>
+      <p>A 20-minute call to discuss your needs, answer your questions, and see if we're the right fit — completely free.</p>
+    </div>
+    <div class="approach-item">
+      <div class="num">02</div>
+      <h3>Initial Assessment</h3>
+      <p>A 50-minute in-depth session to explore your history, goals, and what you'd like to achieve from therapy.</p>
+    </div>
+    <div class="approach-item">
+      <div class="num">03</div>
+      <h3>Tailored Plan</h3>
+      <p>Together we build a personalised therapy plan — flexible, transparent, and reviewed regularly.</p>
+    </div>
+    <div class="approach-item">
+      <div class="num">04</div>
+      <h3>Ongoing Sessions</h3>
+      <p>Weekly or fortnightly 50-minute sessions at a pace that suits you — online or face-to-face.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── Testimonials ── -->
+<section id="testimonials">
+  <p class="section-label">Client Stories</p>
+  <h2 class="section-title">Real people, real progress</h2>
+  <p class="section-sub">
+    Every journey is different. Here's what some of our clients have shared
+    about their experience.
+  </p>
+  <div class="testimonials-grid">
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <p>"I came to Sarah after years of struggling with anxiety that was
+      affecting every part of my life. Within a few months I had practical
+      tools that actually worked — I genuinely feel like a different
+      person."</p>
+      <div class="reviewer">
+        <div class="reviewer-avatar">👩</div>
+        <div>
+          <div class="reviewer-name">Emma R.</div>
+          <div class="reviewer-label">Anxiety &amp; Panic Attacks</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <p>"My partner and I were on the verge of splitting up. Six sessions
+      of couples therapy gave us a shared language and helped us actually
+      listen to each other. It's saved our relationship."</p>
+      <div class="reviewer">
+        <div class="reviewer-avatar">👨</div>
+        <div>
+          <div class="reviewer-name">James &amp; Laura T.</div>
+          <div class="reviewer-label">Couples Therapy</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <p>"After years of trying to manage trauma alone, EMDR therapy with
+      Sarah changed everything. I finally feel free from my past. I can't
+      recommend this highly enough."</p>
+      <div class="reviewer">
+        <div class="reviewer-avatar">🧑</div>
+        <div>
+          <div class="reviewer-name">Marcus D.</div>
+          <div class="reviewer-label">Trauma &amp; PTSD</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FAQ ── -->
+<section id="faq" style="background:var(--cream);">
+  <p class="section-label">Common Questions</p>
+  <h2 class="section-title" style="text-align:center;">Frequently asked questions</h2>
+
+  <div class="faq-grid">
+    <details>
+      <summary>How much does therapy cost?</summary>
+      <p>Individual sessions are £85 for 50 minutes. Couples sessions are £110. A free 20-minute consultation is available to all new clients before committing to any sessions.</p>
+    </details>
+    <details>
+      <summary>Can I do sessions online?</summary>
+      <p>Yes. We offer secure video sessions via an end-to-end encrypted platform. Online therapy is just as effective as in-person for most presentations, and many clients prefer the convenience.</p>
+    </details>
+    <details>
+      <summary>How long will I need therapy?</summary>
+      <p>This varies enormously by person and goal. Some clients find 6–8 sessions enough; others benefit from longer-term work. We'll regularly review your progress together so you're always in control.</p>
+    </details>
+    <details>
+      <summary>Is everything I say kept confidential?</summary>
+      <p>Absolutely. Everything shared in sessions is strictly confidential. The only exceptions are if there is a serious risk of harm to you or others — and even then, we would discuss this with you first wherever possible.</p>
+    </details>
+    <details>
+      <summary>What if I've never tried therapy before?</summary>
+      <p>That's completely fine — many clients come to us with no previous therapy experience. The free consultation is a no-pressure opportunity to ask any questions and see if it feels right for you.</p>
+    </details>
+    <details>
+      <summary>Do you offer sliding-scale or reduced fees?</summary>
+      <p>A small number of reduced-fee slots are available for clients on low incomes or in financial hardship. Please mention this during your consultation and we'll do our best to accommodate.</p>
+    </details>
+  </div>
+</section>
+
+<!-- ── CTA ── -->
+<section id="cta">
+  <p class="section-label" style="color:rgba(255,255,255,.6); text-align:center;">Take the First Step</p>
+  <h2 class="section-title">Ready to begin your journey?</h2>
+  <p class="section-sub">
+    Book your free 20-minute consultation today — no commitment, no pressure.
+    Just a friendly conversation about how we can help.
+  </p>
+  <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
+    <a class="btn btn-warm" href="mailto:hello@peacefulmindstherapy.com">📧 Send an Email</a>
+    <a class="btn btn-outline" style="border-color:rgba(255,255,255,.6); color:var(--white);" href="tel:+441312345678">📞 Call Us</a>
+  </div>
+  <p style="margin-top:2rem; font-size:.85rem; color:rgba(255,255,255,.5);">
+    Typically respond within 24 hours · Sessions available Monday – Saturday
+  </p>
+</section>
+
+<!-- ── Footer ── -->
+<footer>
+  <div>
+    <div class="footer-brand">🌿 Peaceful Minds Therapy</div>
+    <p>Compassionate, professional therapy for individuals, couples, and young people in Edinburgh and online.</p>
+    <p style="margin-top:1rem;">© 2026 Peaceful Minds Therapy Ltd. All rights reserved.</p>
+  </div>
+  <div class="footer-col">
+    <h4>Services</h4>
+    <ul>
+      <li><a href="#services">Anxiety &amp; Stress</a></li>
+      <li><a href="#services">Depression</a></li>
+      <li><a href="#services">Couples Therapy</a></li>
+      <li><a href="#services">Trauma &amp; PTSD</a></li>
+      <li><a href="#services">Life Transitions</a></li>
+    </ul>
+  </div>
+  <div class="footer-col">
+    <h4>Contact</h4>
+    <ul>
+      <li><a href="mailto:hello@peacefulmindstherapy.com">hello@peacefulmindstherapy.com</a></li>
+      <li><a href="tel:+441312345678">+44 (0)131 234 5678</a></li>
+      <li>15 Thistle Street, Edinburgh EH2 1EN</li>
+      <li>Mon – Sat: 8am – 8pm</li>
+    </ul>
+  </div>
+</footer>
+<div class="footer-bottom">
+  Peaceful Minds Therapy Ltd is registered in Scotland (SC123456). Dr Sarah Mitchell is accredited by the BACP (membership no. 012345).
+</div>
+
+</body>
+</html>
